@@ -108,21 +108,20 @@ Place the folder under your web root, for example:
 | 🐧 **Linux** | `/var/www/<YourFolder>/` |
 
 > [!TIP]
-> In this hand-in layout, **all application code** lives in **`COMP1044_SRC/`** (`includes/`, `pages/`, `assets/`, `backend/`, and **`COMP1044_SRC/index.php`** — the real login page).  
-> The **database script** `COMP1044_database.sql` usually sits in the **parent** folder (next to `COMP1044_SRC/`), and the **parent** `index.php` only **redirects** the browser into `COMP1044_SRC/`.
+> **Course layout:** put **all application source** under **`COMP1044_SRC/`** (PHP, `assets/`, `pages/`, `backend/`, and **`index.php` / `logout.php`** for entry).  
+> At the **same level** (next to `COMP1044_SRC/`, not inside it), place **non-code deliverables**: `COMP1044_database.sql`, ERD / assignment PDFs, `README.md`, `VIDEO_SUBMISSION_LINKS.txt`, etc. Those files are not “extra code in the wrong place”—they are the usual way to hand in SQL, docs, and video links.
 
 **Folder sketch**
 
 ```text
-<YourFolder>/                            ← e.g. A-DBI-CW or COMP1044_CW_G6 (must match URL)
-  COMP1044_SRC/
-    index.php                      ← use this in the browser (see [How to run](#how-to-run))
+<YourFolder>/                            ← e.g. A-DBI-CW (name = first segment in http://localhost/.../ )
+  COMP1044_SRC/                          ← all runnable web app code
+    index.php                            ← only login/entry; open this URL (see [How to run](#how-to-run))
     logout.php
-    includes/db_connect.php        ← edit DB credentials here
-    pages/ …  assets/ …  backend/ …
-  COMP1044_database.sql            ← import in phpMyAdmin
-  index.php                        ← optional redirect to COMP1044_SRC/
-  COMP1044_ERD.pdf …
+    includes/db_connect.php              ← edit DB credentials here
+    pages/   assets/   backend/   …
+  COMP1044_database.sql                  ← import in phpMyAdmin (not inside SRC)
+  COMP1044_ERD.pdf, Assignment-*.pdf, README.md, VIDEO_SUBMISSION_LINKS.txt  …
 ```
 
 ---
@@ -184,17 +183,16 @@ The **login page** is always: **`http://localhost/<FOLDER_NAME>/COMP1044_SRC/ind
 
 > [!CAUTION]
 > **If you get “Not Found / 404”**  
-> Open `C:\xampp\htdocs\` in File Explorer and read the **real** folder name. For example, if the folder is still called **`A-DBI-CW`**, you **cannot** use `http://localhost/COMP1044_CW_G6/...` until you **rename** that folder to `COMP1044_CW_G6` (close Cursor/terminals that lock the folder first), **or** use the URL with **`A-DBI-CW`** in the path:
->
-> - **`http://localhost/A-DBI-CW/COMP1044_SRC/index.php`**
-> - or short: **`http://localhost/A-DBI-CW/`** (root `index.php` redirects into `COMP1044_SRC/`)
+> The name right after `http://localhost/` must match your folder under `C:\xampp\htdocs\`. For example, use **`http://localhost/A-DBI-CW/COMP1044_SRC/index.php`** if the folder is **`A-DBI-CW`**.
 
 | Your folder under `htdocs\` (examples) | Open this in the browser |
 |:---|:---|
-| `COMP1044_CW_G6` (after you rename) | **`http://localhost/COMP1044_CW_G6/COMP1044_SRC/index.php`** · short: **`http://localhost/COMP1044_CW_G6/`** |
-| `A-DBI-CW` (common if rename not done yet) | **`http://localhost/A-DBI-CW/COMP1044_SRC/index.php`** · short: **`http://localhost/A-DBI-CW/`** |
+| `A-DBI-CW` | **`http://localhost/A-DBI-CW/COMP1044_SRC/index.php`** |
+| `COMP1044_CW_G6` (if the folder is renamed) | **`http://localhost/COMP1044_CW_G6/COMP1044_SRC/index.php`** |
 | Any other name, e.g. `MyGroup` | **`http://localhost/MyGroup/COMP1044_SRC/index.php`** |
-| **DocumentRoot** = `COMP1044_SRC` only (advanced) | **`http://localhost/index.php`**
+| **DocumentRoot** = `COMP1044_SRC` only (advanced) | **`http://localhost/index.php`** |
+
+**Adding** `README`, `COMP1044_database.sql`, PDFs, or `VIDEO_SUBMISSION_LINKS.txt` **beside** `COMP1044_SRC/` does **not** change the app URL. Entry remains **`…/COMP1044_SRC/index.php`** (unless the server root is set to `COMP1044_SRC` as in the last row).
 
 > [!NOTE]
 > If the page is blank or shows a **database** error, Apache **did** find the file — then check `COMP1044_SRC/includes/db_connect.php` and that MySQL is **running** in XAMPP.
@@ -290,8 +288,8 @@ Comment blocks in **`COMP1044_SRC/includes/functions.php`** map “innovation”
 | `COMP1044_SRC/pages/*/` | Page controllers |
 | `COMP1044_SRC/backend/modules/` | Dashboards & business logic |
 | `COMP1044_SRC/assets/…` | CSS & JS |
-| `COMP1044_database.sql` (beside `COMP1044_SRC/`) | **Import** for a working DB |
-| `index.php` (parent of `COMP1044_SRC/`) | Optional: redirects to `COMP1044_SRC/index.php` |
+| `COMP1044_database.sql` (beside `COMP1044_SRC/`) | **Import** for a working DB (not inside SRC) |
+| `README.md`, `VIDEO_SUBMISSION_LINKS.txt`, ERD/assignment PDFs (beside `COMP1044_SRC/`) | Documentation & submission; **not** application code |
 
 ---
 
@@ -314,6 +312,7 @@ Comment blocks in **`COMP1044_SRC/includes/functions.php`** map “innovation”
 | `Assignment-COMP1044.pdf` | Official coursework brief and submission rules |
 | `COMP1044_ERD.pdf` | ERD / data-dictionary hand-in |
 | `COMP1044_database.sql` | Database to import in phpMyAdmin (beside `COMP1044_SRC/`) |
+| `VIDEO_SUBMISSION_LINKS.txt` | Demo video (YouTube / Google Drive links), if used |
 | `README.md` | This file |
 
 If you add optional docs (runbooks, demo scripts) later, you can create a `docs/` folder; they are not required to run the app.
