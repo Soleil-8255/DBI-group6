@@ -1,0 +1,37 @@
+@import "global/variables.css";
+@import "global/reset.css";
+@import "layout/site.css";
+@import "components/common.css";
+@import "pages/login.css";
+@import "layout/dashboard.css";
+@import "pages/admin.css";
+@import "pages/admin-workload.css";
+@import "pages/admin-alerts.css";
+@import "components/saas-data.css";
+@import "pages/student-radar.css";
+@import "pages/student-dashboard.css";
+@import "pages/assessor-evaluate.css";
+@import "pages/assessor-export.css";
+/* Main entry: @import order = cascade. Partials: global/, layout/, components/, pages/. */
+
+/* Admin results: global keyframes (data grid stagger + status dot; names per coursework brief) */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
+}

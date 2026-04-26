@@ -1,0 +1,47 @@
+﻿/**
+ * Design tokens: colours, type stack, radii, shadows. Also loads display fonts.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap");
+
+:root {
+    --color-primary: #122a54;
+    --color-primary-light: #1e4287;
+    /* Champagne gold — lighter, brighter (less “muddy”) */
+    --color-gold-light: #f0df9a;
+    --color-gold-dark: #e0c878;
+    --color-accent: #dcc88a;
+    /* Cool mist：底层 F8FAFC；次级/略深 F1F5F9 */
+    --color-bg-base: #f8fafc;
+    --color-bg-subtle: #f1f5f9;
+    --color-surface: #ffffff;
+    --color-text: #1b1f2a;
+    /* Slate blue: labels & secondary type (dashboard / forms) */
+    --color-text-label: #475569;
+    --color-text-muted: #5c6478;
+    --color-text-on-primary: #ffffff;
+    --color-border: #e2e8f0;
+    /* Clearer card outline (sides/bottom) vs page chrome */
+    --color-border-card: #cbd5e1;
+    --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* Gold gradients (champagne) */
+    --gradient-gold-champagne: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-dark) 100%);
+    --gradient-gold-champagne-h: linear-gradient(90deg, var(--color-gold-light) 0%, var(--color-gold-dark) 100%);
+    --gradient-gold-champagne-v: linear-gradient(180deg, var(--color-gold-light) 0%, var(--color-gold-dark) 100%);
+    --shadow-sm: 0 1px 2px rgba(18, 42, 84, 0.05), 0 1px 3px rgba(18, 42, 84, 0.06);
+    --shadow-md: 0 4px 14px rgba(18, 42, 84, 0.07), 0 2px 6px rgba(18, 42, 84, 0.05);
+    --shadow-glass: 0 10px 30px rgba(18, 42, 84, 0.05);
+    /* Layered “floating” card (Nottingham blue cast) */
+    --shadow-card-layered: 0 1px 2px rgba(18, 42, 84, 0.04), 0 1px 3px rgba(18, 42, 84, 0.04), 0 10px 30px rgba(18, 42, 84, 0.06);
+    /* Signature top accent (academic / heritage) */
+    --color-signature-gold: #c8a86b;
+    /* Login / elevated cards: blue-tinted deep diffuse shadow */
+    --shadow-login-card: 0 25px 50px -12px rgba(18, 42, 84, 0.15);
+    /* Input focus: champagne glow under the field (pairs with brand blue) */
+    --shadow-input-focus-gold: 0 4px 12px -2px rgba(230, 204, 140, 0.45);
+    /* Heritage wordmark: fine bronze / metal relief (stack with outer shadow in login.css) */
+    --text-shadow-wordmark-bronze: 0 0.5px 0 rgba(255, 248, 235, 0.22), 0 -0.5px 0 rgba(80, 52, 28, 0.42);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+}
+

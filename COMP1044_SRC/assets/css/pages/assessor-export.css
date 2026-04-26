@@ -1,0 +1,462 @@
+/* Assessor export: official transcript preview + print (A4) */
+
+/* Full stage: light grey surround */
+body.page-assessor-export.app-body--dashboard {
+    background: var(--color-bg-base) !important;
+}
+
+.page-assessor-export .dashboard-main,
+.page-assessor-export .dashboard-stage {
+    background: var(--color-bg-base);
+}
+
+.assessor-export-page {
+    --nott-blue: #122a54;
+    --paper-ink: #0f172a;
+}
+
+/* Toolbar */
+.assessor-export-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+    max-width: 56rem;
+    margin: 0 auto 1rem;
+    padding: 0 0.5rem 0 0.25rem;
+}
+
+.assessor-export-toolbar__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+}
+
+.assessor-export-btn-print {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #fff;
+    background: var(--nott-blue);
+    border: 0;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.assessor-export-btn-print:hover {
+    filter: brightness(1.06);
+}
+
+/* Outer grey band (list + transcript) */
+.assessor-export-bleed {
+    background: var(--color-bg-base);
+    margin: 0 -2rem 0;
+    padding: 1.25rem 1rem 2rem;
+    box-sizing: border-box;
+}
+
+/* List view (no internship_id) */
+.assessor-export-list {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 0 0.25rem;
+    box-sizing: border-box;
+}
+
+.assessor-export-list h2 {
+    font-family: var(--font-heading);
+    color: var(--nott-blue);
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.assessor-export-list .lead {
+    color: #475569;
+}
+
+.assessor-export-list .transcript-mono {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-body), ui-monospace, monospace;
+}
+
+.assessor-export-list table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    border: 1px solid var(--paper-ink);
+    background: #fff;
+}
+
+.assessor-export-list th,
+.assessor-export-list td {
+    padding: 0.5rem 0.45rem;
+    text-align: left;
+    border: 1px solid var(--paper-ink);
+    vertical-align: top;
+}
+
+.assessor-export-list thead th {
+    background: var(--color-bg-subtle);
+    font-weight: 700;
+}
+
+.assessor-export-list .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Centred A4 sheet */
+.assessor-export-wrap {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.transcript-paper {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 210mm;
+    min-height: 297mm;
+    margin: 0.5rem auto 1.5rem;
+    padding: 1.75rem 1.5rem 2rem;
+    background: #fff;
+    color: var(--paper-ink);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.45;
+    overflow: hidden;
+}
+
+/* Diagonal watermark */
+.transcript-paper::before {
+    content: "OFFICIAL RECORD";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%) rotate(-24deg);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: var(--nott-blue);
+    opacity: 0.035;
+    pointer-events: none;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.transcript-paper__inner {
+    position: relative;
+    z-index: 1;
+}
+
+.transcript-paper a {
+    color: #1d4ed8;
+}
+
+/* Header */
+.transcript-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 0.35rem;
+}
+
+.transcript-head__left {
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--nott-blue);
+    max-width: 24rem;
+    line-height: 1.35;
+}
+
+.transcript-head__right {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #334155;
+    text-align: right;
+    line-height: 1.35;
+}
+
+.transcript-head__right span {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    margin-top: 0.35rem;
+}
+
+/* 2px Nottingham blue rule */
+.transcript-rule {
+    height: 2px;
+    width: 100%;
+    margin: 0.65rem 0 1rem;
+    padding: 0;
+    border: 0;
+    background: var(--nott-blue);
+}
+
+/* Meta */
+.transcript-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35rem 1.25rem;
+    margin-bottom: 1rem;
+    font-size: 0.88rem;
+}
+
+.transcript-meta dt {
+    font-weight: 600;
+    color: var(--paper-ink);
+    display: inline;
+    margin: 0;
+}
+
+.transcript-meta dd {
+    display: inline;
+    margin: 0;
+    color: #1e293b;
+}
+
+.transcript-meta__row {
+    margin: 0.1rem 0;
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 480px) {
+    .transcript-meta {
+        grid-template-columns: 9rem 1fr;
+    }
+
+    .transcript-meta__row {
+        grid-column: auto;
+    }
+}
+
+/* Table: high-contrast grid */
+.transcript-table-wrap {
+    margin: 0 0 1.15rem;
+    overflow: auto;
+}
+
+.transcript-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    color: var(--paper-ink);
+    background: #fff;
+    border: 1px solid var(--paper-ink);
+}
+
+.transcript-data-table th,
+.transcript-data-table td {
+    padding: 0.45rem 0.5rem;
+    border: 1px solid var(--paper-ink);
+    text-align: left;
+    vertical-align: top;
+}
+
+.transcript-data-table thead th {
+    background: var(--color-bg-subtle);
+    font-weight: 800;
+    letter-spacing: 0.03em;
+}
+
+.transcript-data-table .transcript-data-table__num,
+.transcript-data-table .transcript-data-table__weighted {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+}
+
+/* Donut */
+.transcript-donut-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    margin: 1.15rem 0 1.25rem;
+    text-align: center;
+}
+
+.transcript-donut-section__label {
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #64748b;
+}
+
+.transcript-donut {
+    max-width: 100%;
+    width: 260px;
+    height: auto;
+    display: block;
+    overflow: visible;
+}
+
+/* Donut centre text: do NOT set font-size in px here — viewBox is ~2 user units; px blows up in WebKit and clips as a solid block. Sizes live in SVG attributes. */
+.transcript-donut__label {
+    font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.transcript-donut__line1,
+.transcript-donut__line2 {
+    letter-spacing: 0.02em;
+}
+
+.transcript-comments {
+    margin: 0.65rem 0 0;
+    padding: 0.6rem 0.65rem;
+    border: 1px solid var(--color-border-card);
+    background: var(--color-bg-subtle);
+    font-size: 0.84rem;
+    color: #1e293b;
+}
+
+.transcript-comments dt {
+    font-weight: 800;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #475569;
+    margin-bottom: 0.3rem;
+}
+
+.transcript-comments dd {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Footer: assessor | date */
+.transcript-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1.25rem 2rem;
+    margin-top: 1.75rem;
+    padding-top: 0.25rem;
+    page-break-inside: avoid;
+}
+
+.transcript-foot__col {
+    flex: 1 1 160px;
+    min-width: 0;
+}
+
+.transcript-foot__col--date {
+    text-align: right;
+}
+
+.transcript-foot__line {
+    max-width: 200px;
+    height: 0;
+    border: 0;
+    border-top: 1px solid var(--paper-ink);
+    margin: 0 0 0.4rem;
+}
+
+.transcript-foot__col--date .transcript-foot__line {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.transcript-foot__label {
+    margin: 0;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #334155;
+}
+
+.transcript-foot__meta {
+    margin: 0.2rem 0 0;
+    font-size: 0.78rem;
+    color: var(--paper-ink);
+}
+
+/* Print: white sheet only, A4 */
+@media print {
+    @page {
+        size: A4;
+    }
+
+    body,
+    body.page-assessor-export {
+        background: #fff !important;
+    }
+
+    .dashboard-shell > header,
+    .dashboard-app-body > aside#app-sidebar,
+    .app-header,
+    .sidebar-island,
+    .dashboard-page-header,
+    .site-footer--dashboard,
+    .no-print,
+    .assessor-export-toolbar {
+        display: none !important;
+    }
+
+    .dashboard-shell,
+    .dashboard-app-body,
+    .dashboard-stage,
+    .dashboard-main {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+
+    .assessor-export-bleed {
+        background: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .transcript-paper {
+        max-width: none !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .transcript-paper::before {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .transcript-data-table th,
+    .transcript-data-table td {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
